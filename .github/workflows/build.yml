@@ -1,3 +1,5 @@
+# .github/workflows/build.yml
+
 name: Build v4l2loopback Kernel Module
 
 on:
@@ -22,11 +24,10 @@ jobs:
 
       - name: Build v4l2loopback
         run: |
-          # تأكد من أن دليل البناء المطابق لنواة الجيت هو المرفق:
           make -C . KERNELDIR=/lib/modules/$(uname -r)/build
 
       - name: Upload built module
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: v4l2loopback-module
           path: v4l2loopback.ko
